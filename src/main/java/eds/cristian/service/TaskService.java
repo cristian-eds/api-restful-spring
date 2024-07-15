@@ -13,5 +13,7 @@ public interface TaskService {
 	List<Task> findAll();
 	
 	void delete(Long id);
+	
+	Task update(Long id, Task task);
 
 }
