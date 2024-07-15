@@ -11,5 +11,7 @@ public interface TaskService {
 	Task create(Task taskToCreate);
 	
 	List<Task> findAll();
+	
+	void delete(Long id);
 
 }
