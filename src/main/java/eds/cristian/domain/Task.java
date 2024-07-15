@@ -3,7 +3,6 @@ package eds.cristian.domain;
 import java.time.LocalDate;
 
 import eds.cristian.domain.enuns.Priority;
-import eds.cristian.domain.enuns.Status;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +21,7 @@ public class Task {
 	
 	private Priority priority;
 	
-	private Status status;
+	private boolean status;
 	
 	public String getDescription() {
 		return description;
@@ -42,10 +41,10 @@ public class Task {
 	public void setPriority(Priority priority) {
 		this.priority = priority;
 	}
-	public Status getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 	public Long getId() {
