@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import eds.cristian.domain.Task;
 import eds.cristian.domain.repository.ITaskRepository;
 import eds.cristian.service.TaskService;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 	
 	@Autowired

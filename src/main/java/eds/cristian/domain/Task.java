@@ -1,5 +1,6 @@
 package eds.cristian.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import eds.cristian.domain.enuns.Priority;
@@ -9,8 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Task {
-	
+public class Task implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -53,6 +56,4 @@ public class Task {
 	
 	
 	
-	
-
 }
