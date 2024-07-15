@@ -1,5 +1,6 @@
 package eds.cristian.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import eds.cristian.domain.Task;
 import eds.cristian.service.TaskService;
@@ -41,7 +43,9 @@ public class TaskController {
 	
 	@PostMapping
 	public ResponseEntity<Task> createTask(@RequestBody Task task) {
-		return ResponseEntity.ok(service.create(task));
+		Task createdTask = service.create(task);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTask.getId()).toUri();
+		return ResponseEntity.created(location).body(createdTask);
 	}
 
 }
