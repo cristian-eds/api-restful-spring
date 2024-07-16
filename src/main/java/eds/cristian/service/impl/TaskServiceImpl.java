@@ -47,7 +47,7 @@ public class TaskServiceImpl implements TaskService {
 					task.setStatus(taskUpdated.getStatus());
 					return taskRepository.save(task);
 					}
-				).orElseGet( () -> {return create(taskUpdated);});
+				).orElseGet( () -> {return taskRepository.save(taskUpdated);});
 	}
 	
 

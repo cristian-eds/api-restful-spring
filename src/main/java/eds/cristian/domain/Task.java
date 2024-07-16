@@ -2,6 +2,7 @@ package eds.cristian.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import eds.cristian.domain.enuns.Priority;
 import jakarta.persistence.Entity;
@@ -54,6 +55,26 @@ public class Task implements Serializable{
 		return id;
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Task other = (Task) obj;
+		return Objects.equals(id, other.id);
+	}
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", description=" + description + ", CompletionDate=" + CompletionDate + ", priority="
+				+ priority + ", status=" + status + "]";
+	}
 	
-	
+
 }

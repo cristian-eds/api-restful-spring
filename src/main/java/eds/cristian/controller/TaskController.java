@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import eds.cristian.domain.Task;
 import eds.cristian.service.TaskService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/tasks")
@@ -42,10 +43,27 @@ public class TaskController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Task> createTask(@RequestBody Task task) {
-		Task createdTask = service.create(task);
+	public ResponseEntity<Task> createTask(@RequestBody Task taskToCreate) {
+		Task createdTask = service.create(taskToCreate);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTask.getId()).toUri();
 		return ResponseEntity.created(location).body(createdTask);
 	}
+	
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
+		return ResponseEntity.ok(service.update(id, task));	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
