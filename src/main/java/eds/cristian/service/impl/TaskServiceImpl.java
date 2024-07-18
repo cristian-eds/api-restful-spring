@@ -33,6 +33,9 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public void delete(Long id) {
+		if(!taskRepository.existsById(id)){
+			throw new NoSuchElementException();
+		}
 		taskRepository.deleteById(id);
 		
 	}
